@@ -2,6 +2,7 @@
 
 import {FC, useEffect, useState} from 'react';
 import {AuthModal} from "@/components/AuthModal";
+import {UploadModal} from "@/components/UploadModal";
 
 interface IModalProviderProps {
 }
@@ -20,6 +21,7 @@ export const ModalProvider: FC<IModalProviderProps> = () => {
   return (
     <>
       <AuthModal />
+      <UploadModal />
     </>
   );
 };
