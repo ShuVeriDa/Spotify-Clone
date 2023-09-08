@@ -12,6 +12,7 @@ interface ISearchProps {
 
 const Search: NextPage<ISearchProps> = async ({searchParams}) => {
   const songs = await getSongsByTitle(searchParams.title)
+
   return (
     <div
       className="
