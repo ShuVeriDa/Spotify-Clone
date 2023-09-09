@@ -1,6 +1,7 @@
 import {FC, ReactNode} from 'react';
 import * as Dialog from '@radix-ui/react-dialog'
 import {IoMdClose} from "react-icons/io";
+import {useAuthModal} from "@/hooks/useAuthModal";
 
 interface IModalProps {
   isOpen: boolean
@@ -16,6 +17,7 @@ export const Modal: FC<IModalProps> = (
     description, title
   }
 ) => {
+  const authModal = useAuthModal()
   return (
     <Dialog.Root open={isOpen} defaultOpen={isOpen} onOpenChange={onChange}>
       <Dialog.Portal>
@@ -39,7 +41,7 @@ export const Modal: FC<IModalProps> = (
             right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center 
             justify-center rounded-full focus:outline-none`}
             >
-              <IoMdClose/>
+              <IoMdClose onClick={authModal.onClose}/>
             </button>
           </Dialog.Close>
         </Dialog.Content>
