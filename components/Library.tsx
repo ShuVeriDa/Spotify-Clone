@@ -8,6 +8,7 @@ import {useUser} from "@/hooks/useUser";
 import {useUploadModal} from "@/hooks/useUploadModal";
 import {ISong} from "@/types";
 import {MediaItem} from "@/components/MediaItem";
+import {useOnPlay} from "@/hooks/useOnPlay";
 
 interface ILibraryProps {
   songs: ISong[]
@@ -17,6 +18,8 @@ export const Library: FC<ILibraryProps> = ({songs}) => {
   const authModal = useAuthModal()
   const uploadModal = useUploadModal()
   const {user} = useUser()
+
+  const onPlay = useOnPlay(songs)
 
   const onClick = () => {
     if (!user) {
@@ -43,7 +46,7 @@ export const Library: FC<ILibraryProps> = ({songs}) => {
       <div className={'flex flex-col gap-y-2 mt-4 px-3'}>
         {songs.map(song => {
           return <MediaItem key={song.id}
-                            onClick={() => {}}
+                            onClick={(id: string) => onPlay(id)}
                             data={song}
           />
         })}
