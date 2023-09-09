@@ -9,6 +9,7 @@ import {useUser} from "@/hooks/useUser";
 import uniqid from 'uniqid'
 import {useSupabaseClient} from "@supabase/auth-helpers-react";
 import {useRouter} from "next/navigation";
+import {useAuthModal} from "@/hooks/useAuthModal";
 
 interface IUploadModalProps {
 }
@@ -114,11 +115,14 @@ export const UploadModal: FC<IUploadModalProps> = () => {
     }
   }
 
+
+
   return (
     <Modal title={'Add a song'}
            description={'Upload an mp3 file'}
            isOpen={uploadModal.isOpen}
            onChange={onChange}
+           onClick={uploadModal.onClose}
     >
       <form onSubmit={handleSubmit(onSubmit)}
             className={`flex flex-col gap-y-4`}

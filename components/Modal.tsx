@@ -9,15 +9,15 @@ interface IModalProps {
   title: string
   description: string
   children: ReactNode
+  onClick: () => void
 }
 
 export const Modal: FC<IModalProps> = (
   {
     children, isOpen, onChange,
-    description, title
+    description, title, onClick
   }
 ) => {
-  const authModal = useAuthModal()
   return (
     <Dialog.Root open={isOpen} defaultOpen={isOpen} onOpenChange={onChange}>
       <Dialog.Portal>
@@ -41,7 +41,7 @@ export const Modal: FC<IModalProps> = (
             right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center 
             justify-center rounded-full focus:outline-none`}
             >
-              <IoMdClose onClick={authModal.onClose}/>
+              <IoMdClose onClick={onClick}/>
             </button>
           </Dialog.Close>
         </Dialog.Content>

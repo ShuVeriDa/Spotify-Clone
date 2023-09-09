@@ -36,6 +36,7 @@ export const AuthModal: FC<IAuthModalProps> = () => {
            description={'Login to your account'}
            isOpen={isOpen}
            onChange={onChange}
+           onClick={onClose}
     >
       <Auth theme={'dark'}
             magicLink
